@@ -1,13 +1,5 @@
---
--- PostgreSQL database dump
---
-
-\restrict Vt1Ne5VeIcd7Vp0G2B19xbH6LTtpLic6pc31Hr6MfkyNa44HqhC6uLdRhatQNJ9
-
--- Dumped from database version 18.6
--- Dumped by pg_dump version 18.6
-
 SET statement_timeout = 0;
+
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET transaction_timeout = 0;
@@ -19,27 +11,13 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
---
-
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
-
---
--- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: -
---
-
 COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
-
 
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
-
---
--- Name: administrador; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.administrador (
     id_administrador integer NOT NULL,
@@ -54,11 +32,6 @@ CREATE TABLE public.administrador (
     fecha_creacion timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
-
---
--- Name: administrador_id_administrador_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.administrador_id_administrador_seq
     AS integer
     START WITH 1
@@ -67,17 +40,7 @@ CREATE SEQUENCE public.administrador_id_administrador_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: administrador_id_administrador_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.administrador_id_administrador_seq OWNED BY public.administrador.id_administrador;
-
-
---
--- Name: caja_turno; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.caja_turno (
     id_turno integer NOT NULL,
@@ -93,11 +56,6 @@ CREATE TABLE public.caja_turno (
     observacion_cierre character varying(255)
 );
 
-
---
--- Name: caja_turno_id_turno_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.caja_turno_id_turno_seq
     AS integer
     START WITH 1
@@ -106,28 +64,13 @@ CREATE SEQUENCE public.caja_turno_id_turno_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: caja_turno_id_turno_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.caja_turno_id_turno_seq OWNED BY public.caja_turno.id_turno;
-
-
---
--- Name: categoria; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.categoria (
     id_categoria integer NOT NULL,
     nombre character varying(80) NOT NULL,
     descripcion character varying(255)
 );
-
-
---
--- Name: categoria_id_categoria_seq; Type: SEQUENCE; Schema: public; Owner: -
---
 
 CREATE SEQUENCE public.categoria_id_categoria_seq
     AS integer
@@ -137,17 +80,7 @@ CREATE SEQUENCE public.categoria_id_categoria_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: categoria_id_categoria_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.categoria_id_categoria_seq OWNED BY public.categoria.id_categoria;
-
-
---
--- Name: cliente; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.cliente (
     id_cliente integer NOT NULL,
@@ -161,11 +94,6 @@ CREATE TABLE public.cliente (
     estado boolean DEFAULT true NOT NULL
 );
 
-
---
--- Name: cliente_id_cliente_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.cliente_id_cliente_seq
     AS integer
     START WITH 1
@@ -174,17 +102,7 @@ CREATE SEQUENCE public.cliente_id_cliente_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: cliente_id_cliente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.cliente_id_cliente_seq OWNED BY public.cliente.id_cliente;
-
-
---
--- Name: compra; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.compra (
     id_compra integer NOT NULL,
@@ -197,11 +115,6 @@ CREATE TABLE public.compra (
     estado character varying(20) DEFAULT 'COMPLETADA'::character varying NOT NULL
 );
 
-
---
--- Name: compra_id_compra_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.compra_id_compra_seq
     AS integer
     START WITH 1
@@ -210,17 +123,7 @@ CREATE SEQUENCE public.compra_id_compra_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: compra_id_compra_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.compra_id_compra_seq OWNED BY public.compra.id_compra;
-
-
---
--- Name: detalle_compra; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.detalle_compra (
     id_detalle_compra integer NOT NULL,
@@ -235,11 +138,6 @@ CREATE TABLE public.detalle_compra (
     CONSTRAINT detalle_compra_cantidad_check CHECK ((cantidad > 0))
 );
 
-
---
--- Name: detalle_compra_id_detalle_compra_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.detalle_compra_id_detalle_compra_seq
     AS integer
     START WITH 1
@@ -248,17 +146,7 @@ CREATE SEQUENCE public.detalle_compra_id_detalle_compra_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: detalle_compra_id_detalle_compra_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.detalle_compra_id_detalle_compra_seq OWNED BY public.detalle_compra.id_detalle_compra;
-
-
---
--- Name: detalle_venta; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.detalle_venta (
     id_detalle_venta integer NOT NULL,
@@ -271,11 +159,6 @@ CREATE TABLE public.detalle_venta (
     CONSTRAINT detalle_venta_cantidad_check CHECK ((cantidad > 0))
 );
 
-
---
--- Name: detalle_venta_id_detalle_venta_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.detalle_venta_id_detalle_venta_seq
     AS integer
     START WITH 1
@@ -284,17 +167,7 @@ CREATE SEQUENCE public.detalle_venta_id_detalle_venta_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: detalle_venta_id_detalle_venta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.detalle_venta_id_detalle_venta_seq OWNED BY public.detalle_venta.id_detalle_venta;
-
-
---
--- Name: empleado; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.empleado (
     id_empleado integer NOT NULL,
@@ -311,11 +184,6 @@ CREATE TABLE public.empleado (
     estado boolean DEFAULT true NOT NULL
 );
 
-
---
--- Name: empleado_id_empleado_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.empleado_id_empleado_seq
     AS integer
     START WITH 1
@@ -324,17 +192,7 @@ CREATE SEQUENCE public.empleado_id_empleado_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: empleado_id_empleado_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.empleado_id_empleado_seq OWNED BY public.empleado.id_empleado;
-
-
---
--- Name: inventario; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.inventario (
     id_inventario integer NOT NULL,
@@ -346,11 +204,6 @@ CREATE TABLE public.inventario (
     fecha_actualizacion timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
-
---
--- Name: inventario_id_inventario_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.inventario_id_inventario_seq
     AS integer
     START WITH 1
@@ -359,17 +212,7 @@ CREATE SEQUENCE public.inventario_id_inventario_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: inventario_id_inventario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.inventario_id_inventario_seq OWNED BY public.inventario.id_inventario;
-
-
---
--- Name: lote_producto; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.lote_producto (
     id_lote integer NOT NULL,
@@ -383,11 +226,6 @@ CREATE TABLE public.lote_producto (
     fecha_registro timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
-
---
--- Name: lote_producto_id_lote_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.lote_producto_id_lote_seq
     AS integer
     START WITH 1
@@ -396,17 +234,7 @@ CREATE SEQUENCE public.lote_producto_id_lote_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: lote_producto_id_lote_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.lote_producto_id_lote_seq OWNED BY public.lote_producto.id_lote;
-
-
---
--- Name: movimiento_caja; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.movimiento_caja (
     id_movimiento integer NOT NULL,
@@ -418,11 +246,6 @@ CREATE TABLE public.movimiento_caja (
     fecha timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
-
---
--- Name: movimiento_caja_id_movimiento_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.movimiento_caja_id_movimiento_seq
     AS integer
     START WITH 1
@@ -431,17 +254,7 @@ CREATE SEQUENCE public.movimiento_caja_id_movimiento_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: movimiento_caja_id_movimiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.movimiento_caja_id_movimiento_seq OWNED BY public.movimiento_caja.id_movimiento;
-
-
---
--- Name: movimiento_inventario; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.movimiento_inventario (
     id_movimiento integer NOT NULL,
@@ -458,11 +271,6 @@ CREATE TABLE public.movimiento_inventario (
     fecha timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
-
---
--- Name: movimiento_inventario_id_movimiento_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.movimiento_inventario_id_movimiento_seq
     AS integer
     START WITH 1
@@ -471,17 +279,7 @@ CREATE SEQUENCE public.movimiento_inventario_id_movimiento_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: movimiento_inventario_id_movimiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.movimiento_inventario_id_movimiento_seq OWNED BY public.movimiento_inventario.id_movimiento;
-
-
---
--- Name: pago; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.pago (
     id_pago integer NOT NULL,
@@ -493,11 +291,6 @@ CREATE TABLE public.pago (
     CONSTRAINT pago_monto_check CHECK ((monto > (0)::numeric))
 );
 
-
---
--- Name: pago_id_pago_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.pago_id_pago_seq
     AS integer
     START WITH 1
@@ -506,17 +299,7 @@ CREATE SEQUENCE public.pago_id_pago_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: pago_id_pago_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.pago_id_pago_seq OWNED BY public.pago.id_pago;
-
-
---
--- Name: producto; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.producto (
     id_producto integer NOT NULL,
@@ -533,11 +316,6 @@ CREATE TABLE public.producto (
     imagen_url character varying(500)
 );
 
-
---
--- Name: producto_id_producto_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.producto_id_producto_seq
     AS integer
     START WITH 1
@@ -546,17 +324,7 @@ CREATE SEQUENCE public.producto_id_producto_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: producto_id_producto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.producto_id_producto_seq OWNED BY public.producto.id_producto;
-
-
---
--- Name: proveedor; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.proveedor (
     id_proveedor integer NOT NULL,
@@ -569,11 +337,6 @@ CREATE TABLE public.proveedor (
     estado boolean DEFAULT true NOT NULL
 );
 
-
---
--- Name: proveedor_id_proveedor_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.proveedor_id_proveedor_seq
     AS integer
     START WITH 1
@@ -582,17 +345,7 @@ CREATE SEQUENCE public.proveedor_id_proveedor_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: proveedor_id_proveedor_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.proveedor_id_proveedor_seq OWNED BY public.proveedor.id_proveedor;
-
-
---
--- Name: venta; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.venta (
     id_venta integer NOT NULL,
@@ -606,11 +359,6 @@ CREATE TABLE public.venta (
     estado character varying(20) DEFAULT 'COMPLETADA'::character varying NOT NULL
 );
 
-
---
--- Name: venta_id_venta_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.venta_id_venta_seq
     AS integer
     START WITH 1
@@ -619,146 +367,46 @@ CREATE SEQUENCE public.venta_id_venta_seq
     NO MAXVALUE
     CACHE 1;
 
-
---
--- Name: venta_id_venta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.venta_id_venta_seq OWNED BY public.venta.id_venta;
-
-
---
--- Name: administrador id_administrador; Type: DEFAULT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.administrador ALTER COLUMN id_administrador SET DEFAULT nextval('public.administrador_id_administrador_seq'::regclass);
 
-
---
--- Name: caja_turno id_turno; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.caja_turno ALTER COLUMN id_turno SET DEFAULT nextval('public.caja_turno_id_turno_seq'::regclass);
-
-
---
--- Name: categoria id_categoria; Type: DEFAULT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.categoria ALTER COLUMN id_categoria SET DEFAULT nextval('public.categoria_id_categoria_seq'::regclass);
 
-
---
--- Name: cliente id_cliente; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.cliente ALTER COLUMN id_cliente SET DEFAULT nextval('public.cliente_id_cliente_seq'::regclass);
-
-
---
--- Name: compra id_compra; Type: DEFAULT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.compra ALTER COLUMN id_compra SET DEFAULT nextval('public.compra_id_compra_seq'::regclass);
 
-
---
--- Name: detalle_compra id_detalle_compra; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.detalle_compra ALTER COLUMN id_detalle_compra SET DEFAULT nextval('public.detalle_compra_id_detalle_compra_seq'::regclass);
-
-
---
--- Name: detalle_venta id_detalle_venta; Type: DEFAULT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.detalle_venta ALTER COLUMN id_detalle_venta SET DEFAULT nextval('public.detalle_venta_id_detalle_venta_seq'::regclass);
 
-
---
--- Name: empleado id_empleado; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.empleado ALTER COLUMN id_empleado SET DEFAULT nextval('public.empleado_id_empleado_seq'::regclass);
-
-
---
--- Name: inventario id_inventario; Type: DEFAULT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.inventario ALTER COLUMN id_inventario SET DEFAULT nextval('public.inventario_id_inventario_seq'::regclass);
 
-
---
--- Name: lote_producto id_lote; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.lote_producto ALTER COLUMN id_lote SET DEFAULT nextval('public.lote_producto_id_lote_seq'::regclass);
-
-
---
--- Name: movimiento_caja id_movimiento; Type: DEFAULT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.movimiento_caja ALTER COLUMN id_movimiento SET DEFAULT nextval('public.movimiento_caja_id_movimiento_seq'::regclass);
 
-
---
--- Name: movimiento_inventario id_movimiento; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.movimiento_inventario ALTER COLUMN id_movimiento SET DEFAULT nextval('public.movimiento_inventario_id_movimiento_seq'::regclass);
-
-
---
--- Name: pago id_pago; Type: DEFAULT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.pago ALTER COLUMN id_pago SET DEFAULT nextval('public.pago_id_pago_seq'::regclass);
 
-
---
--- Name: producto id_producto; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.producto ALTER COLUMN id_producto SET DEFAULT nextval('public.producto_id_producto_seq'::regclass);
-
-
---
--- Name: proveedor id_proveedor; Type: DEFAULT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.proveedor ALTER COLUMN id_proveedor SET DEFAULT nextval('public.proveedor_id_proveedor_seq'::regclass);
 
-
---
--- Name: venta id_venta; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.venta ALTER COLUMN id_venta SET DEFAULT nextval('public.venta_id_venta_seq'::regclass);
-
-
---
--- Data for Name: administrador; Type: TABLE DATA; Schema: public; Owner: -
---
 
 COPY public.administrador (id_administrador, nombre, apellido, cedula, telefono, email, usuario, contrasena, estado, fecha_creacion) FROM stdin;
 1	Admin	Principal	12345678	70000000	admin@ferreteria.com	admin	$2a$10$d2zeGGK0j0jebptyYrkF0.GL0LLcwB0II0j5A51WTxlAFEKprsejG	t	2026-09-19 08:57:43.088838
 \.
 
-
---
--- Data for Name: caja_turno; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.caja_turno (id_turno, id_empleado, fecha_apertura, monto_inicial, fecha_cierre, monto_esperado, monto_contado, diferencia, estado, observacion_apertura, observacion_cierre) FROM stdin;
 \.
-
-
---
--- Data for Name: categoria; Type: TABLE DATA; Schema: public; Owner: -
---
 
 COPY public.categoria (id_categoria, nombre, descripcion) FROM stdin;
 1	Herramientas	Herramientas manuales de uso general
@@ -775,44 +423,19 @@ COPY public.categoria (id_categoria, nombre, descripcion) FROM stdin;
 5	Pinturas artesanales	Pinturas, esmaltes y accesorios de pintura
 \.
 
-
---
--- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.cliente (id_cliente, nombre, apellido, cedula_nit, telefono, email, direccion, fecha_registro, estado) FROM stdin;
 2	Juan	Gomez	12345678	1168446	juan@test.com	Calle 5 #10-15	2026-10-02 22:30:43.615284	t
 4	ALVARO	MAGNE	64864861	78484851	magnesanchezalvaro08@gmail.com	Av. Bolivia	2026-10-20 12:07:35.036929	t
 \.
 
-
---
--- Data for Name: compra; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.compra (id_compra, id_proveedor, id_administrador, fecha, subtotal, iva, total, estado) FROM stdin;
 \.
-
-
---
--- Data for Name: detalle_compra; Type: TABLE DATA; Schema: public; Owner: -
---
 
 COPY public.detalle_compra (id_detalle_compra, id_compra, id_producto, cantidad, precio_unitario, descuento, subtotal, lote, fecha_vencimiento) FROM stdin;
 \.
 
-
---
--- Data for Name: detalle_venta; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.detalle_venta (id_detalle_venta, id_venta, id_producto, cantidad, precio_unitario, descuento, subtotal) FROM stdin;
 \.
-
-
---
--- Data for Name: empleado; Type: TABLE DATA; Schema: public; Owner: -
---
 
 COPY public.empleado (id_empleado, id_administrador, nombre, apellido, cedula, cargo, telefono, email, usuario, contrasena, fecha_ingreso, estado) FROM stdin;
 2	1	María Fernanda	Vargas Choque	8901234	Cajera	72345678	mvargas@ferreteriacopacabana.bo	mvargas	bolivia2026	2026-10-02	t
@@ -822,11 +445,6 @@ COPY public.empleado (id_empleado, id_administrador, nombre, apellido, cedula, c
 34	1	Mary	SCZ	646151756	el futuro amor de mi vida	4891891	mary@elamordemividascz.com	MARY	1234567	2026-10-28	t
 32	1	Luz Belen	Suker	35643152	Futura esposa del dueño de la empreza	12345678	luzsuker@gmail.com	Lucesita123	Angheloteamo	2026-10-28	t
 \.
-
-
---
--- Data for Name: inventario; Type: TABLE DATA; Schema: public; Owner: -
---
 
 COPY public.inventario (id_inventario, id_producto, id_administrador, stock_actual, stock_minimo, ubicacion, fecha_actualizacion) FROM stdin;
 7	11	1	18	3	Bodega principal	2026-10-03 08:47:54.91551
@@ -983,42 +601,17 @@ COPY public.inventario (id_inventario, id_producto, id_administrador, stock_actu
 157	161	1	10	3	Bodega principal	2026-10-03 08:47:54.91551
 \.
 
-
---
--- Data for Name: lote_producto; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.lote_producto (id_lote, id_producto, id_detalle_compra, codigo_lote, fecha_ingreso, fecha_vencimiento, cantidad_inicial, cantidad_disponible, fecha_registro) FROM stdin;
 \.
-
-
---
--- Data for Name: movimiento_caja; Type: TABLE DATA; Schema: public; Owner: -
---
 
 COPY public.movimiento_caja (id_movimiento, id_turno, id_pago, tipo, concepto, monto, fecha) FROM stdin;
 \.
 
-
---
--- Data for Name: movimiento_inventario; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.movimiento_inventario (id_movimiento, id_producto, id_lote, tipo, cantidad, stock_anterior, stock_nuevo, motivo, referencia_tipo, referencia_id, usuario, fecha) FROM stdin;
 \.
 
-
---
--- Data for Name: pago; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.pago (id_pago, id_venta, metodo, monto, fecha) FROM stdin;
 \.
-
-
---
--- Data for Name: producto; Type: TABLE DATA; Schema: public; Owner: -
---
 
 COPY public.producto (id_producto, id_categoria, id_administrador, codigo_barras, nombre, descripcion, unidad_medida, precio_compra, precio_venta, estado, fecha_creacion, imagen_url) FROM stdin;
 11	1	1	HERR-002	Martillo de goma	\N	UNIDAD	18000.00	30000.00	t	2026-10-03 08:45:16.957828	\N
@@ -1175,557 +768,196 @@ COPY public.producto (id_producto, id_categoria, id_administrador, codigo_barras
 161	12	1	FERR-012	Amarras plásticas de 20 cm	\N	PAQUETE	8000.00	14000.00	t	2026-10-03 08:47:18.434269	\N
 \.
 
-
---
--- Data for Name: proveedor; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.proveedor (id_proveedor, razon_social, nit, contacto, telefono, email, direccion, estado) FROM stdin;
 2	Ferretería Mayorista S.A.	900999888-7	Carlos Ramírez	77788899	ventas@mayorista.com	Av. Central #50-30	t
 1	Distribuidora El Tornillo S.A.	900183456-1	Juan Perez	3100000000	ventas@eltornillo.com	Calle 10 #20-30	t
 3	Distribuidora Juan Mayta	9001528416-9	Juan Mayta	69938067	JMproductos@gmail.com	San pedro	t
 \.
 
-
---
--- Data for Name: venta; Type: TABLE DATA; Schema: public; Owner: -
---
-
 COPY public.venta (id_venta, id_cliente, id_empleado, fecha, subtotal, iva, descuento, total, estado) FROM stdin;
 \.
 
-
---
--- Name: administrador_id_administrador_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.administrador_id_administrador_seq', 1, true);
-
-
---
--- Name: caja_turno_id_turno_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.caja_turno_id_turno_seq', 1, false);
 
-
---
--- Name: categoria_id_categoria_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.categoria_id_categoria_seq', 13, true);
-
-
---
--- Name: cliente_id_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.cliente_id_cliente_seq', 4, true);
 
-
---
--- Name: compra_id_compra_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.compra_id_compra_seq', 5, true);
-
-
---
--- Name: detalle_compra_id_detalle_compra_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.detalle_compra_id_detalle_compra_seq', 2, true);
 
-
---
--- Name: detalle_venta_id_detalle_venta_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.detalle_venta_id_detalle_venta_seq', 2, true);
-
-
---
--- Name: empleado_id_empleado_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.empleado_id_empleado_seq', 34, true);
 
-
---
--- Name: inventario_id_inventario_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.inventario_id_inventario_seq', 157, true);
-
-
---
--- Name: lote_producto_id_lote_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.lote_producto_id_lote_seq', 1, false);
 
-
---
--- Name: movimiento_caja_id_movimiento_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.movimiento_caja_id_movimiento_seq', 1, false);
-
-
---
--- Name: movimiento_inventario_id_movimiento_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.movimiento_inventario_id_movimiento_seq', 1, false);
 
-
---
--- Name: pago_id_pago_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.pago_id_pago_seq', 2, true);
-
-
---
--- Name: producto_id_producto_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.producto_id_producto_seq', 162, true);
 
-
---
--- Name: proveedor_id_proveedor_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.proveedor_id_proveedor_seq', 3, true);
 
-
---
--- Name: venta_id_venta_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.venta_id_venta_seq', 3, true);
-
-
---
--- Name: administrador administrador_cedula_key; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.administrador
     ADD CONSTRAINT administrador_cedula_key UNIQUE (cedula);
 
-
---
--- Name: administrador administrador_email_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.administrador
     ADD CONSTRAINT administrador_email_key UNIQUE (email);
-
-
---
--- Name: administrador administrador_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.administrador
     ADD CONSTRAINT administrador_pkey PRIMARY KEY (id_administrador);
 
-
---
--- Name: administrador administrador_usuario_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.administrador
     ADD CONSTRAINT administrador_usuario_key UNIQUE (usuario);
-
-
---
--- Name: caja_turno caja_turno_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.caja_turno
     ADD CONSTRAINT caja_turno_pkey PRIMARY KEY (id_turno);
 
-
---
--- Name: categoria categoria_nombre_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.categoria
     ADD CONSTRAINT categoria_nombre_key UNIQUE (nombre);
-
-
---
--- Name: categoria categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.categoria
     ADD CONSTRAINT categoria_pkey PRIMARY KEY (id_categoria);
 
-
---
--- Name: cliente cliente_cedula_nit_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.cliente
     ADD CONSTRAINT cliente_cedula_nit_key UNIQUE (cedula_nit);
-
-
---
--- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.cliente
     ADD CONSTRAINT cliente_pkey PRIMARY KEY (id_cliente);
 
-
---
--- Name: compra compra_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.compra
     ADD CONSTRAINT compra_pkey PRIMARY KEY (id_compra);
-
-
---
--- Name: detalle_compra detalle_compra_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.detalle_compra
     ADD CONSTRAINT detalle_compra_pkey PRIMARY KEY (id_detalle_compra);
 
-
---
--- Name: detalle_venta detalle_venta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.detalle_venta
     ADD CONSTRAINT detalle_venta_pkey PRIMARY KEY (id_detalle_venta);
-
-
---
--- Name: empleado empleado_cedula_key; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.empleado
     ADD CONSTRAINT empleado_cedula_key UNIQUE (cedula);
 
-
---
--- Name: empleado empleado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.empleado
     ADD CONSTRAINT empleado_pkey PRIMARY KEY (id_empleado);
-
-
---
--- Name: empleado empleado_usuario_key; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.empleado
     ADD CONSTRAINT empleado_usuario_key UNIQUE (usuario);
 
-
---
--- Name: inventario inventario_id_producto_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.inventario
     ADD CONSTRAINT inventario_id_producto_key UNIQUE (id_producto);
-
-
---
--- Name: inventario inventario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.inventario
     ADD CONSTRAINT inventario_pkey PRIMARY KEY (id_inventario);
 
-
---
--- Name: lote_producto lote_producto_id_detalle_compra_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.lote_producto
     ADD CONSTRAINT lote_producto_id_detalle_compra_key UNIQUE (id_detalle_compra);
-
-
---
--- Name: lote_producto lote_producto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.lote_producto
     ADD CONSTRAINT lote_producto_pkey PRIMARY KEY (id_lote);
 
-
---
--- Name: movimiento_caja movimiento_caja_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.movimiento_caja
     ADD CONSTRAINT movimiento_caja_pkey PRIMARY KEY (id_movimiento);
-
-
---
--- Name: movimiento_inventario movimiento_inventario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.movimiento_inventario
     ADD CONSTRAINT movimiento_inventario_pkey PRIMARY KEY (id_movimiento);
 
-
---
--- Name: pago pago_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.pago
     ADD CONSTRAINT pago_pkey PRIMARY KEY (id_pago);
-
-
---
--- Name: producto producto_codigo_barras_key; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.producto
     ADD CONSTRAINT producto_codigo_barras_key UNIQUE (codigo_barras);
 
-
---
--- Name: producto producto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.producto
     ADD CONSTRAINT producto_pkey PRIMARY KEY (id_producto);
-
-
---
--- Name: proveedor proveedor_nit_key; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.proveedor
     ADD CONSTRAINT proveedor_nit_key UNIQUE (nit);
 
-
---
--- Name: proveedor proveedor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.proveedor
     ADD CONSTRAINT proveedor_pkey PRIMARY KEY (id_proveedor);
-
-
---
--- Name: venta venta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.venta
     ADD CONSTRAINT venta_pkey PRIMARY KEY (id_venta);
 
-
---
--- Name: idx_compra_fecha; Type: INDEX; Schema: public; Owner: -
---
-
 CREATE INDEX idx_compra_fecha ON public.compra USING btree (fecha);
-
-
---
--- Name: idx_compra_proveedor; Type: INDEX; Schema: public; Owner: -
---
 
 CREATE INDEX idx_compra_proveedor ON public.compra USING btree (id_proveedor);
 
-
---
--- Name: idx_pago_fecha; Type: INDEX; Schema: public; Owner: -
---
-
 CREATE INDEX idx_pago_fecha ON public.pago USING btree (fecha);
-
-
---
--- Name: idx_pago_venta; Type: INDEX; Schema: public; Owner: -
---
 
 CREATE INDEX idx_pago_venta ON public.pago USING btree (id_venta);
 
-
---
--- Name: idx_producto_categoria; Type: INDEX; Schema: public; Owner: -
---
-
 CREATE INDEX idx_producto_categoria ON public.producto USING btree (id_categoria);
-
-
---
--- Name: idx_producto_codigo; Type: INDEX; Schema: public; Owner: -
---
 
 CREATE INDEX idx_producto_codigo ON public.producto USING btree (codigo_barras);
 
-
---
--- Name: idx_venta_cliente; Type: INDEX; Schema: public; Owner: -
---
-
 CREATE INDEX idx_venta_cliente ON public.venta USING btree (id_cliente);
 
-
---
--- Name: idx_venta_fecha; Type: INDEX; Schema: public; Owner: -
---
-
 CREATE INDEX idx_venta_fecha ON public.venta USING btree (fecha);
-
-
---
--- Name: compra fk_compra_admin; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.compra
     ADD CONSTRAINT fk_compra_admin FOREIGN KEY (id_administrador) REFERENCES public.administrador(id_administrador);
 
-
---
--- Name: compra fk_compra_proveedor; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.compra
     ADD CONSTRAINT fk_compra_proveedor FOREIGN KEY (id_proveedor) REFERENCES public.proveedor(id_proveedor);
-
-
---
--- Name: detalle_compra fk_detalle_compra_compra; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.detalle_compra
     ADD CONSTRAINT fk_detalle_compra_compra FOREIGN KEY (id_compra) REFERENCES public.compra(id_compra) ON DELETE CASCADE;
 
-
---
--- Name: detalle_compra fk_detalle_compra_producto; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.detalle_compra
     ADD CONSTRAINT fk_detalle_compra_producto FOREIGN KEY (id_producto) REFERENCES public.producto(id_producto);
-
-
---
--- Name: detalle_venta fk_detalle_venta_producto; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.detalle_venta
     ADD CONSTRAINT fk_detalle_venta_producto FOREIGN KEY (id_producto) REFERENCES public.producto(id_producto);
 
-
---
--- Name: detalle_venta fk_detalle_venta_venta; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.detalle_venta
     ADD CONSTRAINT fk_detalle_venta_venta FOREIGN KEY (id_venta) REFERENCES public.venta(id_venta) ON DELETE CASCADE;
-
-
---
--- Name: empleado fk_empleado_admin; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.empleado
     ADD CONSTRAINT fk_empleado_admin FOREIGN KEY (id_administrador) REFERENCES public.administrador(id_administrador);
 
-
---
--- Name: inventario fk_inventario_admin; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.inventario
     ADD CONSTRAINT fk_inventario_admin FOREIGN KEY (id_administrador) REFERENCES public.administrador(id_administrador);
-
-
---
--- Name: inventario fk_inventario_producto; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.inventario
     ADD CONSTRAINT fk_inventario_producto FOREIGN KEY (id_producto) REFERENCES public.producto(id_producto);
 
-
---
--- Name: pago fk_pago_venta; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.pago
     ADD CONSTRAINT fk_pago_venta FOREIGN KEY (id_venta) REFERENCES public.venta(id_venta) ON DELETE CASCADE;
-
-
---
--- Name: producto fk_producto_admin; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.producto
     ADD CONSTRAINT fk_producto_admin FOREIGN KEY (id_administrador) REFERENCES public.administrador(id_administrador);
 
-
---
--- Name: producto fk_producto_categoria; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.producto
     ADD CONSTRAINT fk_producto_categoria FOREIGN KEY (id_categoria) REFERENCES public.categoria(id_categoria);
-
-
---
--- Name: venta fk_venta_cliente; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.venta
     ADD CONSTRAINT fk_venta_cliente FOREIGN KEY (id_cliente) REFERENCES public.cliente(id_cliente);
 
-
---
--- Name: venta fk_venta_empleado; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.venta
     ADD CONSTRAINT fk_venta_empleado FOREIGN KEY (id_empleado) REFERENCES public.empleado(id_empleado);
-
-
---
--- Name: lote_producto lote_producto_id_detalle_compra_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.lote_producto
     ADD CONSTRAINT lote_producto_id_detalle_compra_fkey FOREIGN KEY (id_detalle_compra) REFERENCES public.detalle_compra(id_detalle_compra);
 
-
---
--- Name: lote_producto lote_producto_id_producto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.lote_producto
     ADD CONSTRAINT lote_producto_id_producto_fkey FOREIGN KEY (id_producto) REFERENCES public.producto(id_producto);
-
-
---
--- Name: movimiento_inventario movimiento_inventario_id_lote_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
 
 ALTER TABLE ONLY public.movimiento_inventario
     ADD CONSTRAINT movimiento_inventario_id_lote_fkey FOREIGN KEY (id_lote) REFERENCES public.lote_producto(id_lote);
 
-
---
--- Name: movimiento_inventario movimiento_inventario_id_producto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY public.movimiento_inventario
     ADD CONSTRAINT movimiento_inventario_id_producto_fkey FOREIGN KEY (id_producto) REFERENCES public.producto(id_producto);
 
-
---
--- PostgreSQL database dump complete
---
-
 \unrestrict Vt1Ne5VeIcd7Vp0G2B19xbH6LTtpLic6pc31Hr6MfkyNa44HqhC6uLdRhatQNJ9
-
